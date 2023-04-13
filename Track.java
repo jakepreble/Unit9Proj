@@ -119,6 +119,7 @@ class LongJumper extends LongJump{
     @Override
     public String toString() {
         return super.toString() + " Measured distance is " + distance + " feet.";
+
     }
     public double getDistance(){
         return distance;
@@ -126,18 +127,60 @@ class LongJumper extends LongJump{
     public void setDistance(double inDistance){
         this.distance = inDistance;
     }
+    public void train(){
+        this.distance += 0.5;
+    }
+    public void injury(){
+        this.distance -= 0.5;
+    }
+    public void saturdayPractice(){
+        System.out.println("Jumping day! Distance increased 6 inches.");
+        this.distance += 0.5;
+    }
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof LongJumper)) {
+            return false;
+        }
+        if (!super.equals(o)) {
+            return false;
+        }
+        LongJumper longjumper = (LongJumper) o;
+        if (distance != longjumper.distance) {
+            return false;
+        } else if (distance == longjumper.distance) {
+            return true;
+        }
+        return true;
+        }
 }
 class Main{
     public static void main(String[] args) {
         ArrayList<Track> listOfSports = new ArrayList<Track>();
         Track s1 = new Track();
-        Track s2 = new LongJump();
-        Track s3 = new LongJumper();
-        Track s4 = s3;
+        Track s2 = new Track("Spring", 5);
+        Track s3 = new LongJump();
+        Track s4 = new LongJump("Spring", 5, 8);
+        Track s5 = new LongJumper();
+        Track s6 = new LongJumper("Spring", 5, 8, 15.0);
+        Track s7 = s2;
+        Track s8 = s4;
+        Track s9 = s6;
+        Track s10 = s1;
         listOfSports.add(s1);
         listOfSports.add(s2);
         listOfSports.add(s3);
         listOfSports.add(s4);
+        listOfSports.add(s5);
+        listOfSports.add(s6);
+        listOfSports.add(s7);
+        listOfSports.add(s8);
+        listOfSports.add(s9);
+        listOfSports.add(s10);
+
+
 
     }
 }
